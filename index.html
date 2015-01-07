@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>首页</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script type="application/javascript" src="js/libs/template.min.js"></script>
+    <script data-main="js/app.js?5555555555555ffff555555555555555555555ff5555rrr" src="js/require.min.js"></script>
+    <script id="j-tmpl" type="text/template">
+        {{ if(it.success){ }}
+        <h2>results:</h2>
+        <ul>
+            {{ for (var i = 0, l = it.data.length; i < l; i++) { }}
+            <li>
+                <h5>{{!it.data[i].title}}</h5>
+                <p>{{!it.data[i].message}}</p>
+            </li>
+            {{ } }}
+        <ul>
+        {{ }else{ }}
+        <h2>暂无数据</h2>
+        {{ } }}
+    </script>
+    <script id="b" type="text/template">
+        <h3>fdf</h3>
+        {{ if(it.name){ }}
+                <h3>{{=it.name}}</h3>
+                {{ for(var i = 0; i < it.value.length; i++) { }}
+
+                    {{ if(it.value[i].title) { }}
+                        <a>{{!it.value[i].title}}</a>
+                    {{ } else { }}
+
+                    {{ } }}
+                {{ } }}
+        {{ }else{ }}
+        <h2>暂无数据</h2>
+        {{ } }}
+    </script>
+</head>
+
+<body>
+<div id="content"></div>
+<div id="contentcustom"></div>
+</body>
+
+<script>
+    var obj = {
+        success: 'f',
+        data:[
+            {title:'item1',message:11},
+            {title:'item2',message:22}
+        ]
+    };
+    var obj2 = {
+        name: 'zhangjiangyifdfdfdfng',
+        value: [
+            {title: 'fdf'},
+            {title: ""}
+        ]
+    }
+    var tmpl = document.getElementById('j-tmpl').innerHTML;
+    var doTtmpl = doT.template(tmpl);
+    document.getElementById('content').innerHTML = doTtmpl(obj );
+    var tmpl2 = document.getElementById('b').innerHTML;
+    var doTtmpl2 = doT.template(tmpl2);
+    document.getElementById('contentcustom').innerHTML = doTtmpl2(obj2);
+</script>
+</body>
+
+</html>
